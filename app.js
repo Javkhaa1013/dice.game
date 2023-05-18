@@ -11,10 +11,11 @@ var dice =Math.floor(Math.random()*6)+1;
 // window.document.querySelector("#score-0").textContent = dice;
 // document.querySelector("#score-1").innerHTML = "<em>Yes!</em>";
 // Програм эхлэхэд бэлтгэе
-window.document.querySelector("#score-0").textContent = 0;
-.document.querySelector("#score-1").textContent = 0;
+
+window.document.getElementById("#score-0").textContent = 0;
+document.getElementById("#score-1").textContent = 0;
  document.querySelector(".dice").style.display = "none";
-document.querySelector("#current-0").textContent= 0;
+document.getElementById("#current-0").textContent= 0;
 document.querySelector("#current-1").textContent= 0;
 
 console.log( "Шоо :"+ dice);
