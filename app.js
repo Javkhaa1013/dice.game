@@ -33,19 +33,7 @@ document.querySelector(".btn-roll").addEventListener( "click", function (){
          document.getElementById("current-" + activePlayer).textContent = roundScore;
       }else{
         //1 буусан тул тоглогчын ээлжийг энэ хэсэгт сольж өгнө. 
-         //  Энэ тоглогчийн ээлжиндээ цуглуулсан оноог 0  
-         roundScore = 0;
-         document.getElementById("current-" + activePlayer).textContent = 0;
-         // Тоглогчийн ээлжийг нөгөө тоглогч руу шилжүүлнэ. 
-        // Хэрэв идэвхтэй тоглогч нь 0 байвал идэвхтэй тоглогч нь 1 болго. Үгүй бол идэвхтэй тоглогчыг 0 болго. 
-        
-        activePlayer === 0 ? (activePlayer = 1 ) : (activePlayer = 0);
-        // Улаан цэгийг хайж олно 
-        document.querySelector(".player-0-panel").classList.toggle("active");
-        document.querySelector(".player-1-panel").classList.toggle("active");
-
-          //  Шоог тур алга болгоно 
-          diceDom.style.display = " none";
+         switchToNextPlayer( );
         
 
         // if(activePlayer ===0){
@@ -53,6 +41,46 @@ document.querySelector(".btn-roll").addEventListener( "click", function (){
         // } else {
         //     activePlayer = 0;
         // }
-
       }
     });
+//  HOLD Товчны эвент листнер 
+document.querySelector(".btn-hold").addEventListener("click" , function(){
+  // Уг тоглогчийн цуглуулсан ээлжний оноог глобаль оноон дээр нь нэмж өгнө. 
+  scores[activePlayer] = scores[activePlayer] + roundScore;
+
+//Дэлгэц дээр оноог нь өөрчилнө 
+document.getElementById("score-"+ activePlayer).textContent =   scores[activePlayer]
+  //  Уг тоглогч хожсон эсэхийг %оноо нь 100-с их эсэх? шалгах 
+  if(scores[activePlayer]>= 10){
+    // Ялагч гэсэн текстийг нэрийх нь оронд гаргана. 
+    document.getElementById("name-"+ activePlayer).textContent = "Winner !!!"
+    document.querySelector(".player-"+activePlayer + "-panel").classList.add("winner");
+    document.querySelector(".player-"+activePlayer + "-panel").classList.remove("active");
+  }else{
+     //  Тоглогчийн ээлжийг солино. 
+     switchToNextPlayer( );
+  }
+  
+
+  // if (activePlayer === 0 ){
+  //   scores[0] = scores[0] + roundScore;
+  // } else{
+  //   scores[1] = scores[1] + roundScore;
+  //  }
+
+});
+// энэ функц нь тоглох ээлжийг дараачийн тоглогч руу шилжүүлдэг. 
+function switchToNextPlayer(){
+ //  Энэ тоглогчийн ээлжиндээ цуглуулсан оноог 0  
+ roundScore = 0;
+ document.getElementById("current-" + activePlayer).textContent = 0;
+ // Тоглогчийн ээлжийг нөгөө тоглогч руу шилжүүлнэ. 
+activePlayer === 0 ? (activePlayer = 1 ) : (activePlayer = 0);
+// Улаан цэгийг хайж олно 
+document.querySelector(".player-0-panel").classList.toggle("active");
+document.querySelector(".player-1-panel").classList.toggle("active");
+
+  //  Шоог тур алга болгоно 
+  diceDom.style.display = " none";
+}
+// Шинээр тоглоом эхлүүлэх товчний эвент 
