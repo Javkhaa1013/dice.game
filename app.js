@@ -1,9 +1,22 @@
-// Тоглогчын ээлжийг хадгалах хувьсагч 1дэх тоглогчыг 0, 2дох тоглогчыг 1 гэж үзье.
-var activePlayer = 0;
+// Тоглоомын бүх газарт ашиглагдах глобаль хувьсагчдыг энд зарлая.
+// Аль тоглогч шоо шидэх вэ гэдгийг энд хадгална.
+var activePlayer;
+// хоёр тоглогчийн цуглуулсан оноонууд 
+var score;
+// Идэвхтэй тоглогийн цуглуулж байгаа оноо
+var roundScore;
+// Шооны зургийг үзүүлэх элементийг DOM хайж олоод энд хадгалъя
+var diceDom = document.querySelector(".dice")
+// Тоглоомыг шинээр эхлүүлнэ.
+initGame( );
+// Тоглоом шинээр эхлүүлэхэд бэлдэнэ.
+function initGame( ){
+  // Тоглогчын ээлжийг хадгалах хувьсагч 1дэх тоглогчыг 0, 2дох тоглогчыг 1 гэж үзье.
+activePlayer = 0;
 // Тоглогчидын цуглуулсан оноог хадгалах хувьсагч 
-var scores=[0,0];
+scores=[0,0];
 // Ээлжиндээ цуглуулж байгаа оноог хадгалах 
-var roundScore = 0;
+roundScore = 0;
 
 // Шооны аль талаар буусныг хадгалах хувьсагч хэрэгтэй. 1-6 гэсэн утгыг энэ хувьсагчид санамсаргүйгээр үүсгэж өгнө
 var diceNumber =Math.floor(Math.random()*6)+1;
@@ -15,9 +28,20 @@ window.document.getElementById("score-0").textContent = "0"
 document.getElementById("score-1").textContent = "0";
 document.getElementById("current-0").textContent= "0";
 document.getElementById("current-1").textContent= "0";
+// Тоглогчидын нэрийг буцааж гаргах
+document.getElementById("name-0").textContent = "Player-1";
+document.getElementById("name-1").textContent = "Player-2";
 
-var diceDom = document.querySelector(".dice")
+document.querySelector(".player-0-panel").classList.remove("winner");
+document.querySelector(".player-1-panel").classList.remove("winner");
+
+document.querySelector(".player-0-panel").classList.remove("active");
+document.querySelector(".player-1-panel").classList.remove("active");
+
+document.querySelector(".player-0-panel").classList.add("active");
+
 diceDom.style.display = "none";
+}
 
 // Шоон шидэх эвент листенер
 document.querySelector(".btn-roll").addEventListener( "click", function (){
@@ -34,13 +58,6 @@ document.querySelector(".btn-roll").addEventListener( "click", function (){
       }else{
         //1 буусан тул тоглогчын ээлжийг энэ хэсэгт сольж өгнө. 
          switchToNextPlayer( );
-        
-
-        // if(activePlayer ===0){
-        //     activePlayer = 1;
-        // } else {
-        //     activePlayer = 0;
-        // }
       }
     });
 //  HOLD Товчны эвент листнер 
@@ -83,4 +100,5 @@ document.querySelector(".player-1-panel").classList.toggle("active");
   //  Шоог тур алга болгоно 
   diceDom.style.display = " none";
 }
-// Шинээр тоглоом эхлүүлэх товчний эвент 
+//  New game буюу Шинэ тоглоом эхлүүлэх товчний эвент листенер
+document.querySelector(".btn-new").addEventListener("click", initGame);
