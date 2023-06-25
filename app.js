@@ -66,7 +66,7 @@ document.querySelector(".btn-roll").addEventListener( "click", function (){
          alert("1 буусан тул дараагын тоглогч шоог шиднэ. ")
       }
   }else{
-    alert("Тоглоом дууссан байна. NEW GAME товчыг дарж шинээр эхэлнэ үү ")
+    alert("Тоглоом дууссан байна. ШИНЭЭР ЭХЛЭХ  товчыг дарж шинээр эхэлнэ үү ")
   }
     });
 //  HOLD Товчны эвент листнер 
@@ -91,7 +91,7 @@ document.getElementById("score-"+ activePlayer).textContent =   scores[activePla
      switchToNextPlayer( );
   }
 } else {
-  alert("Тоглоом дууссан байна. NEW GAME товчыг дарж шинээр эхэлнэ үү ")
+  alert("Тоглоом дууссан байна. ШИНЭЭР ЭХЛЭХ товчыг дарж шинээр эхэлнэ үү ")
 }
 });
 // энэ функц нь тоглох ээлжийг дараачийн тоглогч руу шилжүүлдэг. 
@@ -106,7 +106,7 @@ document.querySelector(".player-0-panel").classList.toggle("active");
 document.querySelector(".player-1-panel").classList.toggle("active");
 
   //  Шоог тур алга болгоно 
-  diceDom.style.display = " none";
+  // diceDom.style.display = " none";
 }
 //  New game буюу Шинэ тоглоом эхлүүлэх товчний эвент листенер
 document.querySelector(".btn-new").addEventListener("click", initGame);
