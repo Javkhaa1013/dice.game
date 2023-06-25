@@ -33,8 +33,8 @@ document.getElementById("score-1").textContent = "0";
 document.getElementById("current-0").textContent= "0";
 document.getElementById("current-1").textContent= "0";
 // Тоглогчидын нэрийг буцааж гаргах
-document.getElementById("name-0").textContent = "Player-1";
-document.getElementById("name-1").textContent = "Player-2";
+document.getElementById("name-0").textContent = "Тоглогч-1";
+document.getElementById("name-1").textContent = "Тоглогч-2";
 
 document.querySelector(".player-0-panel").classList.remove("winner");
 document.querySelector(".player-1-panel").classList.remove("winner");
@@ -63,6 +63,7 @@ document.querySelector(".btn-roll").addEventListener( "click", function (){
       }else{
         //1 буусан тул тоглогчын ээлжийг энэ хэсэгт сольж өгнө. 
          switchToNextPlayer( );
+         alert("1 буусан тул дараагын тоглогч шоог шиднэ. ")
       }
   }else{
     alert("Тоглоом дууссан байна. NEW GAME товчыг дарж шинээр эхэлнэ үү ")
@@ -82,7 +83,7 @@ document.getElementById("score-"+ activePlayer).textContent =   scores[activePla
     isNewGame = false;
 
     // Ялагч гэсэн текстийг нэрийх нь оронд гаргана. 
-    document.getElementById("name-"+ activePlayer).textContent = "Winner !!!"
+    document.getElementById("name-"+ activePlayer).textContent = "Та хожлоо !!!"
     document.querySelector(".player-"+activePlayer + "-panel").classList.add("winner");
     document.querySelector(".player-"+activePlayer + "-panel").classList.remove("active");
   }else{
